@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────
+   FONTS: Bricolage Grotesque (display) + Geist Mono (mono)
+   ────────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ──────────────────────────────────────────────
+   DESIGN TOKENS – Darkroom Photobooth Aesthetic
+   Jet black / off-white cream / warm amber gold
+   ────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --radius: 0.375rem;
+
+    /* Light mode (unused — dark-only app) */
+    --background: 0.12 0.008 60;
+    --foreground: 0.92 0.012 80;
+    --card: 0.15 0.008 55;
+    --card-foreground: 0.92 0.012 80;
+    --popover: 0.17 0.01 58;
+    --popover-foreground: 0.92 0.012 80;
+    --primary: 0.72 0.12 75;
+    --primary-foreground: 0.1 0.005 45;
+    --secondary: 0.2 0.008 55;
+    --secondary-foreground: 0.88 0.012 78;
+    --muted: 0.18 0.006 55;
+    --muted-foreground: 0.55 0.01 65;
+    --accent: 0.65 0.14 72;
+    --accent-foreground: 0.1 0.005 45;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.25 0.01 60;
+    --input: 0.22 0.01 58;
+    --ring: 0.72 0.12 75;
+    --chart-1: 0.72 0.12 75;
+    --chart-2: 0.6 0.08 220;
+    --chart-3: 0.55 0.1 160;
+    --chart-4: 0.65 0.14 45;
+    --chart-5: 0.7 0.09 300;
+    --sidebar: 0.13 0.008 58;
+    --sidebar-foreground: 0.92 0.012 80;
+    --sidebar-primary: 0.72 0.12 75;
+    --sidebar-primary-foreground: 0.1 0.005 45;
+    --sidebar-accent: 0.18 0.008 55;
+    --sidebar-accent-foreground: 0.92 0.012 80;
+    --sidebar-border: 0.22 0.01 58;
+    --sidebar-ring: 0.72 0.12 75;
+
+    /* Custom photobooth tokens */
+    --amber: 0.72 0.14 75;
+    --amber-glow: 0.65 0.12 72;
+    --cream: 0.93 0.015 80;
+    --film-dark: 0.1 0.008 55;
+    --film-border: 0.22 0.012 62;
+    --strip-bg: 0.97 0.008 85;
+    --strip-shadow: 0 8px 32px oklch(0 0 0 / 0.7), 0 2px 8px oklch(0 0 0 / 0.5);
+  }
+
+  .dark,
+  :root {
+    color-scheme: dark;
+    --background: 0.1 0.008 60;
+    --foreground: 0.93 0.012 82;
+    --card: 0.14 0.009 58;
+    --card-foreground: 0.93 0.012 82;
+    --popover: 0.16 0.009 56;
+    --popover-foreground: 0.93 0.012 82;
+    --primary: 0.72 0.13 74;
+    --primary-foreground: 0.1 0.005 45;
+    --secondary: 0.19 0.009 56;
+    --secondary-foreground: 0.88 0.012 78;
+    --muted: 0.17 0.007 56;
+    --muted-foreground: 0.52 0.01 66;
+    --accent: 0.65 0.14 72;
+    --accent-foreground: 0.1 0.005 45;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.23 0.012 60;
+    --input: 0.21 0.01 58;
+    --ring: 0.72 0.13 74;
+    --chart-1: 0.72 0.13 74;
+    --chart-2: 0.6 0.08 220;
+    --chart-3: 0.55 0.1 160;
+    --chart-4: 0.65 0.14 45;
+    --chart-5: 0.7 0.09 300;
+    --sidebar: 0.12 0.008 58;
+    --sidebar-foreground: 0.93 0.012 82;
+    --sidebar-primary: 0.72 0.13 74;
+    --sidebar-primary-foreground: 0.1 0.005 45;
+    --sidebar-accent: 0.17 0.008 56;
+    --sidebar-accent-foreground: 0.93 0.012 82;
+    --sidebar-border: 0.21 0.01 58;
+    --sidebar-ring: 0.72 0.13 74;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Film grain texture overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   CUSTOM UTILITIES
+   ────────────────────────────────────────────── */
+@layer utilities {
+  .text-amber {
+    color: oklch(var(--amber));
+  }
+  .bg-amber {
+    background-color: oklch(var(--amber));
+  }
+  .text-cream {
+    color: oklch(var(--cream));
+  }
+  .border-film {
+    border-color: oklch(var(--film-border));
+  }
+
+  /* Physical photo strip appearance */
+  .photo-strip {
+    background: oklch(var(--strip-bg));
+    box-shadow: var(--strip-shadow);
+    border: 1px solid oklch(0.88 0.008 80);
+  }
+
+  /* Glowing card style */
+  .card-glow {
+    background: oklch(var(--card));
+    border: 1px solid oklch(var(--border));
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.4),
+      0 0 0 1px oklch(var(--amber) / 0.04),
+      inset 0 1px 0 oklch(1 0 0 / 0.03);
+  }
+
+  /* Amber CTA glow */
+  .btn-amber-glow {
+    box-shadow:
+      0 0 20px oklch(var(--amber) / 0.25),
+      0 4px 12px oklch(0 0 0 / 0.4);
+  }
+
+  /* Countdown typography */
+  .countdown-text {
+    font-family: "Fraunces", serif;
+    font-feature-settings: "ss01" 1;
+    text-shadow: 0 0 60px oklch(var(--amber) / 0.6);
+  }
+
+  /* Viewfinder border */
+  .viewfinder {
+    box-shadow:
+      0 0 0 1px oklch(var(--amber) / 0.4),
+      0 0 0 4px oklch(0 0 0 / 0.8),
+      inset 0 0 0 1px oklch(var(--amber) / 0.15);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--border)) transparent;
+  }
+
+  /* Flash animation */
+  @keyframes flash-in-out {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .flash-overlay {
+    animation: flash-in-out 0.4s ease-out forwards;
+  }
+
+  /* Subtle shimmer */
+  @keyframes shimmer {
+    from { background-position: -200% center; }
+    to { background-position: 200% center; }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(var(--muted)) 0%,
+      oklch(var(--secondary)) 50%,
+      oklch(var(--muted)) 100%
+    );
+    background-size: 200% auto;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  /* Page fade transition */
+  @keyframes page-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-enter {
+    animation: page-fade-in 0.35s ease-out both;
+  }
+}
